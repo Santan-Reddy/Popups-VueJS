@@ -1,18 +1,24 @@
-<template>
-    <div class="popup">
-        <div class="popup-inner">
-            <slot />
-            <button @click="toggleTrigger('buttonsTrigger')" class="popup-close">Close Popup</button>
-        </div>
-    </div>
-</template>
-
 <script setup>
 import {ref} from 'vue'
 const props = defineProps({
     toggleTrigger:Function
 })
+
+const emit = defineEmits(['close'])
+
+const close = () => {
+  emit('close')
+}
 </script>
+
+<template>
+    <div class="popup">
+        <div class="popup-inner">
+            <slot />
+            <button @click="close" class="popup-close">Close Popup</button>
+        </div>
+    </div>
+</template>
 
 <style scoped lang="scss">
 .popup{

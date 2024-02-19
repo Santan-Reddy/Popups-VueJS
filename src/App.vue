@@ -20,18 +20,23 @@ const toggleTrigger=(trigger)=>{
   <main>
     <h1>Vue Popup</h1>
     <button @click="toggleTrigger('buttonsTrigger')">Open Popup</button>
-    <Popup
-     v-if="triggers.buttonsTrigger"
-     :toggleTrigger="toggleTrigger('buttonsTrigger')"
-     >
-      <h2>My Popup</h2>
+    <Popup v-if="triggers.buttonsTrigger" @close="toggleTrigger('buttonsTrigger')">
+      <h2>Buttons Popup</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis architecto fuga quam?</p>
     </Popup>
-    <Popup v-if="triggers.timedTrigger">
-      <h2>My Popup</h2>
+    <Popup v-if="triggers.timedTrigger" @close="toggleTrigger('timedTrigger')">
+      <h2>Timed Popup</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga, non!</p>
     </Popup>
   </main>
 </template>
 
 <style scoped lang="scss">
-
+main{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100vh;
+}
 </style>
